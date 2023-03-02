@@ -1,15 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Home from './page/Home';
+import './CSS/main.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <p>Hello word</p>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<Navigate to="/home" />} />
+      <Route path="/home" element={<Home />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
