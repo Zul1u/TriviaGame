@@ -1,0 +1,37 @@
+.home-container {
+  background-color: $backgrounColor-02;
+  height: 100vh;
+  margin: auto;
+  width: 70rem;
+}
+
+.home-header-container {
+  margin-bottom: 4rem;
+  width: 100%;
+  background-color: $backgrounColor-03;
+  box-shadow: 0 5px 10px $backgrounColor-03;
+  .title {
+    text-shadow: 3px 3px #780000;
+    color: $textColor-01;
+    font-family: 'Metal Mania', Arial, Helvetica, sans-serif;
+    font-size: 4.5rem;
+    padding: 3rem 0 2rem;
+    text-align: center;
+  }
+}
+
+.game-description-container {
+  text-align: center;
+  .game-description {
+    color: $textColor-01;
+    font-size: 2rem;
+    padding: 3rem 1rem;
+    box-shadow: 0 5px 10px $backgrounColor-03;
+  }
+}
+
+.home-bnt-container {
+  margin-top: 10rem;
+  text-align: center;
+  width: 100%;
+}
