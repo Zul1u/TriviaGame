@@ -2,9 +2,11 @@ import PropTypes from 'prop-types';
 
 function Button({ children, handleClick }) {
   return (
-    <button type="button" onClick={handleClick}>
-      {children}
-    </button>
+    <div className="generic-bnt-container">
+      <button type="button" onClick={handleClick}>
+        {children}
+      </button>
+    </div>
   );
 }
 

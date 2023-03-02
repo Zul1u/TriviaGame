@@ -1,0 +1,16 @@
+.generic-bnt-container {
+  padding: 1rem;
+  button {
+    background-color: $bntColor-01;
+    border-radius: 3px;
+    box-shadow: 6px 6px 3px $backgrounColor-03;
+    font-size: 2rem;
+    padding: 1.5rem 3rem;
+    width: 75%;
+
+    &:hover {
+      box-shadow: 4px 4px 5px $backgrounColor-03;
+      cursor: pointer;
+    }
+  }
+}
