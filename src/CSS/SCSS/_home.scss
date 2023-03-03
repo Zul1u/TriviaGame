@@ -32,6 +32,15 @@
 
 .home-bnt-container {
   margin-top: 10rem;
-  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+}
+
+.home-form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 0;
 }
