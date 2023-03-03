@@ -36,6 +36,7 @@ button {
 
 .generic-bnt-container {
   padding: 1rem;
+  width: 75%;
 }
 .generic-bnt-container button {
   background-color: #0d1b2a;
@@ -43,7 +44,7 @@ button {
   box-shadow: 6px 6px 3px #16181b;
   font-size: 2rem;
   padding: 1.5rem 3rem;
-  width: 75%;
+  width: 100%;
 }
 .generic-bnt-container button:hover {
   box-shadow: 4px 4px 5px #16181b;
@@ -84,8 +85,17 @@ button {
 
 .home-bnt-container {
   margin-top: 10rem;
-  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+}
+
+.home-form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 0;
 }
 
 .bg-modal {
@@ -119,6 +129,30 @@ button {
   top: 0.5rem;
   font-size: large;
   font-weight: 600;
+}
+
+.generic-input-label {
+  padding: 1rem;
+  display: block;
+  width: 75%;
+}
+.generic-input-label p {
+  font-size: 2rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+.generic-input {
+  background-color: #343a40;
+  border: 0;
+  border-radius: 3px;
+  font-size: 2rem;
+  padding: 1rem 2.5rem;
+  width: 100%;
+}
+.generic-input:focus-visible {
+  outline: none;
+  border-bottom: 2px solid;
 }
 
 @media (max-width: 700px) {
