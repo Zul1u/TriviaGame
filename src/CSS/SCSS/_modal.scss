@@ -1,0 +1,32 @@
+.bg-modal {
+  align-items: center;
+  background-color: $backgrounColor-02;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 70rem;
+  z-index: 10;
+}
+
+.modal-container {
+  background-color: $backgrounColor-03;
+  border-radius: 5px;
+  display: block;
+  height: 35rem;
+  width: 85%;
+}
+
+.close-modal-container {
+  text-align: right;
+  .close-modal {
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    position: relative;
+    right: 0.5rem;
+    top: 0.5rem;
+    font-size: large;
+    font-weight: 600;
+  }
+}

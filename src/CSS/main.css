@@ -3,12 +3,8 @@
   font-size: 62.5%;
 }
 
-html {
-  box-sizing: border-box;
-}
-
 *, *:before, *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
   color: #e9ecef;
   font-family: Rajdhani, Arial, Helvetica, sans-serif;
 }
@@ -92,11 +88,47 @@ button {
   width: 100%;
 }
 
+.bg-modal {
+  align-items: center;
+  background-color: rgba(33, 37, 41, 0.7);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 70rem;
+  z-index: 10;
+}
+
+.modal-container {
+  background-color: #16181b;
+  border-radius: 5px;
+  display: block;
+  height: 35rem;
+  width: 85%;
+}
+
+.close-modal-container {
+  text-align: right;
+}
+.close-modal-container .close-modal {
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  position: relative;
+  right: 0.5rem;
+  top: 0.5rem;
+  font-size: large;
+  font-weight: 600;
+}
+
 @media (max-width: 700px) {
   .home-container {
     width: 100%;
   }
   .generic-bnt-container button:hover {
     box-shadow: 6px 6px 3px #16181b;
+  }
+  .bg-modal {
+    width: 100%;
   }
 }/*# sourceMappingURL=main.css.map */

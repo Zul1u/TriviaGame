@@ -10,12 +10,8 @@ $bntColor-01: #0d1b2a;
   font-size: 62.5%;
 }
 
-html {
-  box-sizing: border-box;
-}
-
 *, *:before, *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
   color: $textColor-01;
   font-family: Rajdhani, Arial, Helvetica, sans-serif;
 }
