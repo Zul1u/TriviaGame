@@ -1,0 +1,24 @@
+.header-container {
+  margin-bottom: 4rem;
+  width: 100%;
+  background-color: $backgrounColor-03;
+  box-shadow: 0 5px 10px $backgrounColor-03;
+}
+
+.header-infos {
+  display: flex;
+  justify-content: space-around;
+  padding: 2.5rem 0;
+  span {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  .title {
+    text-shadow: 3px 3px #780000;
+    color: $textColor-01;
+    font-family: 'Metal Mania', Arial, Helvetica, sans-serif;
+    font-size: 4.5rem;
+    padding: 1rem 0 1rem;
+    text-align: center;
+  }
+}

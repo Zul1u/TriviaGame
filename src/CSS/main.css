@@ -58,18 +58,28 @@ button {
   cursor: pointer;
 }
 
-.home-header-container {
+.header-container {
   margin-bottom: 4rem;
   width: 100%;
   background-color: #16181b;
   box-shadow: 0 5px 10px #16181b;
 }
-.home-header-container .title {
+
+.header-infos {
+  display: flex;
+  justify-content: space-around;
+  padding: 2.5rem 0;
+}
+.header-infos span {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.header-infos .title {
   text-shadow: 3px 3px #780000;
   color: #e9ecef;
   font-family: "Metal Mania", Arial, Helvetica, sans-serif;
   font-size: 4.5rem;
-  padding: 3rem 0 2rem;
+  padding: 1rem 0 1rem;
   text-align: center;
 }
 
