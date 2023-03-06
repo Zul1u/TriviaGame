@@ -16,7 +16,7 @@ function Home() {
   };
 
   return (
-    <div className="home-container">
+    <div>
       <header className="home-header-container">
         <h1 className="title">Welcome to Trivia Game!!</h1>
       </header>

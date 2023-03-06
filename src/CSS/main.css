@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Metal+Mania&family=Rajdhani:wght@500&display=swap");
+.main-container {
+  background-color: rgba(33, 37, 41, 0.7);
+  height: 100vh;
+  margin: auto;
+  width: 70rem;
+}
+
 :root {
   font-size: 62.5%;
 }
@@ -49,13 +56,6 @@ button {
 .generic-bnt-container button:hover {
   box-shadow: 4px 4px 5px #16181b;
   cursor: pointer;
-}
-
-.home-container {
-  background-color: rgba(33, 37, 41, 0.7);
-  height: 100vh;
-  margin: auto;
-  width: 70rem;
 }
 
 .home-header-container {
@@ -156,7 +156,7 @@ button {
 }
 
 @media (max-width: 700px) {
-  .home-container {
+  .main-container {
     width: 100%;
   }
   .generic-bnt-container button:hover {

@@ -6,6 +6,13 @@ $backgrounColor-03: darken(#212529, 5);
 $textColor-01: #e9ecef;
 $bntColor-01: #0d1b2a;
 
+.main-container {
+  background-color: $backgrounColor-02;
+  height: 100vh;
+  margin: auto;
+  width: 70rem;
+}
+
 :root {
   font-size: 62.5%;
 }

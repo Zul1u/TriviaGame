@@ -7,7 +7,7 @@ import Game from './page/Game';
 function App() {
   return (
     <Provider>
-      <main>
+      <main className="main-container">
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />
