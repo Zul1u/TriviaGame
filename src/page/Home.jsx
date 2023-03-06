@@ -1,25 +1,31 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
+import Header from '../components/Header';
 import Input from '../components/Input';
 import Modal from '../components/Modal';
+import {
+  createPlayerInfoStorage,
+  deletePlayerInfoStorage,
+} from '../helpers/playerInfoStorage';
 
 function Home() {
   const [openModal, setOpenModal] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
   const SUBMIT = true;
+  const HOMEPAGE = true;
 
   const HandleClickPlayButton = (e) => {
     e.preventDefault();
+    deletePlayerInfoStorage();
+    createPlayerInfoStorage(inputValue);
     navigate('/game');
   };
 
   return (
     <div>
-      <header className="home-header-container">
-        <h1 className="title">Welcome to Trivia Game!!</h1>
-      </header>
+      <Header homePage={HOMEPAGE} />
       <article className="game-description-container">
         <p className="game-description">
           Test your general knowledge, challenge your friends and have fun!
