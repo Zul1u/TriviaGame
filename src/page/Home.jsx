@@ -20,7 +20,7 @@ function Home() {
     e.preventDefault();
     deletePlayerInfoStorage();
     createPlayerInfoStorage(inputValue);
-    navigate('/game');
+    navigate('/game/question/1');
   };
 
   return (

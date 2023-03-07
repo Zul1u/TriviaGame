@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/game" element={<Game />} />
+          <Route path="/game/question/:id" element={<Game />} />
         </Routes>
       </main>
     </Provider>
