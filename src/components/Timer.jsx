@@ -1,23 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import Context from '../context/Context';
 
 export default function Timer() {
   const [seconds, setSeconds] = useState(30);
-  const [interval, setIntervals] = useState(null);
+  const [timerId, setTimerId] = useState(0);
+  const { stopTimer, setRenderButtonNext, startTimer } = useContext(Context);
 
   useEffect(() => {
-    if (seconds === 0) setSeconds(30);
-    setIntervals(
-      setInterval(() => {
+    if (startTimer) {
+      if (seconds !== 30) setSeconds(30);
+      const newIntervalId = setInterval(() => {
         setSeconds((pvState) => pvState - 1);
-      }, 1000),
-    );
-  }, []);
+      }, 1000);
+      setTimerId(newIntervalId);
+    }
+  }, [startTimer]);
 
   useEffect(() => {
     if (seconds === 0) {
-      clearInterval(interval);
+      clearInterval(timerId);
+      setRenderButtonNext(true);
+    } else if (stopTimer) {
+      clearInterval(timerId);
     }
-  }, [seconds]);
+  }, [seconds, stopTimer]);
 
   return <div>{seconds}</div>;
 }
