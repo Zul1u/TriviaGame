@@ -9,17 +9,17 @@ function shuffleAnswers({
   difficulty,
   question,
 }) {
-  const a = incorrects.map((answer) => ({
+  const answers = incorrects.map((answer) => ({
     answer,
     correct: false,
   }));
-  a.push({ answer: correct, correct: true });
-  const obj = {
+  answers.push({ answer: correct, correct: true });
+  const questionsInfo = {
     difficulty,
     question,
-    answers: shuffle(a),
+    answers: shuffle(answers),
   };
-  return obj;
+  return questionsInfo;
 }
 
 export default shuffleAnswers;
