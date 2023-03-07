@@ -4,6 +4,7 @@ import Context from './Context';
 
 export default function Provider({ children }) {
   const [questionData, setQuestionData] = useState([]);
+  const [timerSeconds, setTimerSeconds] = useState(30);
   const [stopTimer, setStopTimer] = useState(false);
   const [renderButtonNext, setRenderButtonNext] = useState(false);
   const [startTimer, setStartTimer] = useState(true);
@@ -25,8 +26,10 @@ export default function Provider({ children }) {
       setRenderButtonNext,
       startTimer,
       setStartTimer,
+      timerSeconds,
+      setTimerSeconds,
     }),
-    [questionData, stopTimer, renderButtonNext, startTimer],
+    [questionData, stopTimer, renderButtonNext, startTimer, timerSeconds],
   );
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }

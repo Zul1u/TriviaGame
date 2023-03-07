@@ -4,7 +4,12 @@ import AnswerButton from '../components/AnswerButton';
 import Header from '../components/Header';
 import Timer from '../components/Timer';
 import Context from '../context/Context';
+import {
+  updatePlayerQuestion,
+  updatePlayerScore,
+} from '../helpers/playerInfoStorage';
 import shuffleAnswers from '../helpers/shuffleAnswers';
+import sumPlayerScore from '../helpers/sumPlayerScore';
 
 export default function Game() {
   const {
@@ -14,6 +19,7 @@ export default function Game() {
     setRenderButtonNext,
     renderButtonNext,
     setStartTimer,
+    timerSeconds,
   } = useContext(Context);
 
   const { id } = useParams();
@@ -23,6 +29,7 @@ export default function Game() {
   const navigate = useNavigate();
   const QUESTION = id - 1;
   const NEXT_QUESTION = id <= questions.length - 1;
+  const NEXT_ID = Number(id) + 1;
 
   useEffect(() => {
     const fetchApi = async () => fetchTriviaApi();
@@ -47,7 +54,11 @@ export default function Game() {
       ({ answer }) => answer === value,
     );
 
-    if (isCorrect[0].correct === true) setIsCorrectAnswer(value);
+    if (isCorrect[0].correct === true) {
+      setIsCorrectAnswer(value);
+      const score = sumPlayerScore(curiosity.difficulty, timerSeconds);
+      updatePlayerScore(score);
+    }
   };
 
   const handleClickBtnNext = () => {
@@ -55,8 +66,9 @@ export default function Game() {
     setStartTimer(true);
     setStopTimer(false);
     setRenderButtonNext(false);
+    updatePlayerQuestion(NEXT_ID);
     if (NEXT_QUESTION) {
-      return navigate(`/game/question/${Number(id) + 1}`);
+      return navigate(`/game/question/${NEXT_ID}`);
     }
     return navigate('/scoreboard');
   };

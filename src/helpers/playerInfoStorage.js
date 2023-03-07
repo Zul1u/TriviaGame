@@ -16,8 +16,31 @@ function getPlayerInfoStorage() {
   return JSON.parse(localStorage.getItem('playerInfo'));
 }
 
+function updatePlayerScore(questionScore) {
+  const storageData = JSON.parse(localStorage.getItem('playerInfo'));
+  const newScore = questionScore + storageData.score;
+  if (storageData) {
+    localStorage.setItem(
+      'playerInfo',
+      JSON.stringify({ ...storageData, score: newScore }),
+    );
+  }
+}
+
+function updatePlayerQuestion(numberQuestion) {
+  const storageData = JSON.parse(localStorage.getItem('playerInfo'));
+  if (storageData) {
+    localStorage.setItem(
+      'playerInfo',
+      JSON.stringify({ ...storageData, question: `${numberQuestion}/10` }),
+    );
+  }
+}
+
 export {
   createPlayerInfoStorage,
   getPlayerInfoStorage,
   deletePlayerInfoStorage,
+  updatePlayerScore,
+  updatePlayerQuestion,
 };
