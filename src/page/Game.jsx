@@ -22,6 +22,7 @@ export default function Game() {
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
   const QUESTION = id - 1;
+  const NEXT_QUESTION = id <= questions.length - 1;
 
   useEffect(() => {
     const fetchApi = async () => fetchTriviaApi();
@@ -54,7 +55,7 @@ export default function Game() {
     setStartTimer(true);
     setStopTimer(false);
     setRenderButtonNext(false);
-    if (id <= questions.length - 1) {
+    if (NEXT_QUESTION) {
       return navigate(`/game/question/${Number(id) + 1}`);
     }
     return navigate('/scoreboard');
@@ -82,7 +83,7 @@ export default function Game() {
           </div>
           {renderButtonNext && (
             <button type="button" onClick={handleClickBtnNext}>
-              NEXT QUESTION
+              {NEXT_QUESTION ? 'NEXT QUESTION' : 'Scoreboard'}
             </button>
           )}
         </div>
