@@ -36,7 +36,7 @@ export default function Timer({ disabledBtn, correctAnswer }) {
   }, [timerSeconds, stopTimer]);
 
   return (
-    <div className="timer-container">
+    <div className="timer-container" data-testid="timer-component">
       <span>{timerSeconds}</span>
     </div>
   );
