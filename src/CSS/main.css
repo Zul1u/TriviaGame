@@ -195,6 +195,32 @@ button {
   cursor: default;
 }
 
+.button-next {
+  bottom: 0;
+  position: fixed;
+  width: 70rem;
+  text-align: center;
+}
+.button-next button {
+  background-color: #006400;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.5rem 0;
+  width: 100%;
+}
+.button-next button:hover {
+  cursor: pointer;
+}
+
+.timer-container {
+  text-align: center;
+  width: 100%;
+}
+.timer-container span {
+  display: block;
+  font-size: 6rem;
+}
+
 @media (max-width: 700px) {
   .main-container {
     width: 100%;
@@ -204,6 +230,9 @@ button {
   }
   .answer-button-container button {
     width: 70%;
+  }
+  .button-next {
+    width: 100%;
   }
   .bg-modal {
     width: 100%;

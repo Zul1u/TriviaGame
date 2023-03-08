@@ -98,9 +98,11 @@ export default function Game() {
             ))}
           </div>
           {renderButtonNext && (
-            <button type="button" onClick={handleClickBtnNext}>
-              {NEXT_QUESTION ? 'NEXT QUESTION' : 'Scoreboard'}
-            </button>
+            <div className="button-next">
+              <button type="button" onClick={handleClickBtnNext}>
+                {NEXT_QUESTION ? 'NEXT QUESTION' : 'Scoreboard'}
+              </button>
+            </div>
           )}
         </div>
       )}

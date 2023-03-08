@@ -30,5 +30,9 @@ export default function Timer() {
     }
   }, [timerSeconds, stopTimer]);
 
-  return <div>{timerSeconds}</div>;
+  return (
+    <div className="timer-container">
+      <span>{timerSeconds}</span>
+    </div>
+  );
 }
