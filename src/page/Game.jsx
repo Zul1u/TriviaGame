@@ -44,16 +44,19 @@ export default function Game() {
 
   const curiosity = questions[QUESTION];
 
-  const handleClick = ({ target: { value } }) => {
+  const correctAnswer = () => {
     const ANSWER_CORRECT = curiosity.answers.filter(
       ({ correct }) => correct === true,
     );
+    return setIsCorrectAnswer(ANSWER_CORRECT[0].answer);
+  };
 
+  const handleClick = ({ target: { value } }) => {
     setStopTimer(true);
     setStartTimer(false);
     setDisabled(true);
     setRenderButtonNext(true);
-    setIsCorrectAnswer(ANSWER_CORRECT[0].answer);
+    correctAnswer();
 
     const isCorrect = curiosity.answers.filter(
       ({ answer }) => answer === value,
@@ -82,7 +85,7 @@ export default function Game() {
       <Header />
       {curiosity && (
         <div>
-          <Timer />
+          <Timer disabledBtn={setDisabled} correctAnswer={correctAnswer} />
           <div className="game-description-container">
             <p className="game-description">{curiosity.question}</p>
           </div>

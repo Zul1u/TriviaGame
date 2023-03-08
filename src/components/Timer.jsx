@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Context from '../context/Context';
 
-export default function Timer() {
+export default function Timer({ disabledBtn, correctAnswer }) {
   const [timerId, setTimerId] = useState(0);
   const {
     stopTimer,
@@ -9,6 +10,7 @@ export default function Timer() {
     startTimer,
     timerSeconds,
     setTimerSeconds,
+    setStartTimer,
   } = useContext(Context);
 
   useEffect(() => {
@@ -24,7 +26,10 @@ export default function Timer() {
   useEffect(() => {
     if (timerSeconds === 0) {
       clearInterval(timerId);
+      setStartTimer(false);
       setRenderButtonNext(true);
+      disabledBtn(true);
+      correctAnswer();
     } else if (stopTimer) {
       clearInterval(timerId);
     }
@@ -36,3 +41,8 @@ export default function Timer() {
     </div>
   );
 }
+
+Timer.propTypes = {
+  disabledBtn: PropTypes.func.isRequired,
+  correctAnswer: PropTypes.func.isRequired,
+};
