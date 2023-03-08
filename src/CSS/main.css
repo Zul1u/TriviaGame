@@ -222,14 +222,20 @@ button {
 }
 
 @media (max-width: 700px) {
+  .header-container {
+    margin-bottom: 2rem;
+  }
   .main-container {
     width: 100%;
+  }
+  .home-bnt-container {
+    margin-top: 5rem;
   }
   .generic-bnt-container button:hover {
     box-shadow: 6px 6px 3px #16181b;
   }
   .answer-button-container button {
-    width: 70%;
+    width: 90%;
   }
   .button-next {
     width: 100%;

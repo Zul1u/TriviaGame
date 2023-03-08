@@ -1,10 +1,19 @@
 @media (max-width: 700px) {
+  //HEADER
+  .header-container {
+    margin-bottom: 2rem;
+  }
+
   //HOME PAGE
   .main-container {
     width: 100%;
   }
 
   //BUTTONS
+  .home-bnt-container {
+    margin-top: 5rem;
+  }
+
   .generic-bnt-container {
     button {
       &:hover {
@@ -15,7 +24,7 @@
 
   .answer-button-container {
     button {
-      width: 70%;
+      width: 90%;
     }
   }
 
