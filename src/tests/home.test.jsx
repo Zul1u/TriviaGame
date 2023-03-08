@@ -32,6 +32,19 @@ describe('Checks that all elements are on the screen', () => {
 });
 
 describe('Check the functionality of the buttons', () => {
+  it('Scoreboard Button', async () => {
+    renderWithRouter(<Home />, { route: '/home' });
+
+    const buttonScoreboard = screen.getByRole('button', {
+      name: 'Scoreboard',
+    });
+
+    expect(buttonScoreboard).toBeInTheDocument();
+
+    await userEvent.click(buttonScoreboard);
+    expect(window.location.pathname).toBe('/scoreboard');
+  });
+
   it('Button Start New Game', async () => {
     renderWithRouter(<Home />, { route: '/home' });
 
@@ -49,7 +62,7 @@ describe('Check the functionality of the buttons', () => {
 
     const nickNameInput = screen.getByPlaceholderText('Enter your nickname');
     const buttonPlay = screen.getByRole('button', {
-      name: 'Start New Game',
+      name: 'Play',
     });
 
     expect(nickNameInput).toBeInTheDocument();
@@ -59,5 +72,27 @@ describe('Check the functionality of the buttons', () => {
     await userEvent.click(buttonCloseModal);
 
     expect(buttonCloseModal).not.toBeInTheDocument();
+  });
+
+  it('Button Play', async () => {
+    renderWithRouter(<Home />, { route: '/home' });
+
+    const buttonStart = screen.getByRole('button', {
+      name: 'Start New Game',
+    });
+
+    expect(buttonStart).toBeInTheDocument();
+
+    await userEvent.click(buttonStart);
+
+    const nickNameInput = screen.getByPlaceholderText('Enter your nickname');
+    const buttonPlay = screen.getByRole('button', {
+      name: 'Play',
+    });
+
+    await userEvent.type(nickNameInput, 'Zu1lu');
+    await userEvent.click(buttonPlay);
+
+    expect(window.location.pathname).toBe('/game/question/1');
   });
 });
