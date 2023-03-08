@@ -1,17 +1,19 @@
 import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
+import TimerContext from '../context/timer/TimerContext';
 
 export default function Timer({ disabledBtn, correctAnswer }) {
   const [timerId, setTimerId] = useState(0);
+  const { setRenderButtonNext } = useContext(Context);
+
   const {
     stopTimer,
-    setRenderButtonNext,
     startTimer,
     timerSeconds,
     setTimerSeconds,
     setStartTimer,
-  } = useContext(Context);
+  } = useContext(TimerContext);
 
   useEffect(() => {
     if (startTimer) {

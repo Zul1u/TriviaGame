@@ -4,10 +4,8 @@ import AnswerButton from '../components/AnswerButton';
 import Header from '../components/Header';
 import Timer from '../components/Timer';
 import Context from '../context/Context';
-import {
-  updatePlayerQuestion,
-  updatePlayerScore,
-} from '../helpers/playerInfoStorage';
+import TimerContext from '../context/timer/TimerContext';
+import { updatePlayerQuestion, updatePlayerScore } from '../helpers/playerInfoStorage';
 import shuffleAnswers from '../helpers/shuffleAnswers';
 import sumPlayerScore from '../helpers/sumPlayerScore';
 
@@ -15,12 +13,11 @@ export default function Game() {
   const {
     fetchTriviaApi,
     questionData,
-    setStopTimer,
     setRenderButtonNext,
     renderButtonNext,
-    setStartTimer,
-    timerSeconds,
   } = useContext(Context);
+
+  const { setStopTimer, timerSeconds, setStartTimer } = useContext(TimerContext);
 
   const { id } = useParams();
   const [isCorrectAnswer, setIsCorrectAnswer] = useState('');
@@ -45,9 +42,7 @@ export default function Game() {
   const curiosity = questions[QUESTION];
 
   const correctAnswer = () => {
-    const ANSWER_CORRECT = curiosity.answers.filter(
-      ({ correct }) => correct === true,
-    );
+    const ANSWER_CORRECT = curiosity.answers.filter(({ correct }) => correct === true);
     return setIsCorrectAnswer(ANSWER_CORRECT[0].answer);
   };
 
@@ -58,9 +53,7 @@ export default function Game() {
     setRenderButtonNext(true);
     correctAnswer();
 
-    const isCorrect = curiosity.answers.filter(
-      ({ answer }) => answer === value,
-    );
+    const isCorrect = curiosity.answers.filter(({ answer }) => answer === value);
 
     if (isCorrect[0].correct === true) {
       const score = sumPlayerScore(curiosity.difficulty, timerSeconds);

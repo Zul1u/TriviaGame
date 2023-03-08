@@ -3,20 +3,8 @@ import { useMemo, useState } from 'react';
 import Context from './Context';
 
 export default function Provider({ children }) {
-  const [questionData, setQuestionData] = useState([
-    {
-      category: 'General Knowledge',
-      correct_answer: 'Genesis',
-      difficulty: 'easy',
-      incorrect_answers: ['Exodus', 'Leviticus', 'Numbers'],
-      question: 'What is the first book of the Old Testament?',
-      type: 'multiple',
-    },
-  ]);
-  const [timerSeconds, setTimerSeconds] = useState(30);
-  const [stopTimer, setStopTimer] = useState(false);
+  const [questionData, setQuestionData] = useState([]);
   const [renderButtonNext, setRenderButtonNext] = useState(false);
-  const [startTimer, setStartTimer] = useState(true);
 
   const fetchTriviaApi = async () => {
     try {
@@ -33,16 +21,10 @@ export default function Provider({ children }) {
     () => ({
       fetchTriviaApi,
       questionData,
-      stopTimer,
-      setStopTimer,
       renderButtonNext,
       setRenderButtonNext,
-      startTimer,
-      setStartTimer,
-      timerSeconds,
-      setTimerSeconds,
     }),
-    [questionData, stopTimer, renderButtonNext, startTimer, timerSeconds],
+    [questionData, renderButtonNext],
   );
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
