@@ -1,0 +1,34 @@
+.answer-button-container {
+  margin-top: 1.5rem;
+  text-align: center;
+  button {
+    background-color: $bntColor-01;
+    border-radius: 3px;
+    box-shadow: 6px 6px 3px $backgrounColor-03;
+    font-size: 1.8rem;
+    padding: 1rem 0;
+    width: 50%;
+    &:disabled {
+      background-color: lighten($bntColor-01, 2);
+    }
+  }
+}
+
+.incorrect {
+  &:hover {
+    box-shadow: 4px 4px 5px $backgrounColor-03;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    box-shadow: 3px 3px 7px $answerIncorrect;
+    cursor: default;
+  }
+}
+
+.correct {
+  &:disabled {
+    box-shadow: 3px 3px 7px $answerCorrect;
+    cursor: default;
+  }
+}

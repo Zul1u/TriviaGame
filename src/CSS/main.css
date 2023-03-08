@@ -165,12 +165,45 @@ button {
   border-bottom: 2px solid;
 }
 
+.answer-button-container {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.answer-button-container button {
+  background-color: #0d1b2a;
+  border-radius: 3px;
+  box-shadow: 6px 6px 3px #16181b;
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 50%;
+}
+.answer-button-container button:disabled {
+  background-color: #0f2032;
+}
+
+.incorrect:hover {
+  box-shadow: 4px 4px 5px #16181b;
+  cursor: pointer;
+}
+.incorrect:disabled {
+  box-shadow: 3px 3px 7px #dc2f02;
+  cursor: default;
+}
+
+.correct:disabled {
+  box-shadow: 3px 3px 7px #008000;
+  cursor: default;
+}
+
 @media (max-width: 700px) {
   .main-container {
     width: 100%;
   }
   .generic-bnt-container button:hover {
     box-shadow: 6px 6px 3px #16181b;
+  }
+  .answer-button-container button {
+    width: 70%;
   }
   .bg-modal {
     width: 100%;

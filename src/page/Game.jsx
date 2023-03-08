@@ -45,17 +45,21 @@ export default function Game() {
   const curiosity = questions[QUESTION];
 
   const handleClick = ({ target: { value } }) => {
+    const ANSWER_CORRECT = curiosity.answers.filter(
+      ({ correct }) => correct === true,
+    );
+
     setStopTimer(true);
     setStartTimer(false);
     setDisabled(true);
     setRenderButtonNext(true);
+    setIsCorrectAnswer(ANSWER_CORRECT[0].answer);
 
     const isCorrect = curiosity.answers.filter(
       ({ answer }) => answer === value,
     );
 
     if (isCorrect[0].correct === true) {
-      setIsCorrectAnswer(value);
       const score = sumPlayerScore(curiosity.difficulty, timerSeconds);
       updatePlayerScore(score);
     }
