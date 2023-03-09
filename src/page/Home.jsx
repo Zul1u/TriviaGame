@@ -14,7 +14,6 @@ function Home() {
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
   const SUBMIT = true;
-  const HOMEPAGE = true;
 
   const HandleClickPlayButton = (e) => {
     e.preventDefault();
@@ -25,7 +24,7 @@ function Home() {
 
   return (
     <div>
-      <Header homePage={HOMEPAGE} />
+      <Header title="Welcome to Trivia Game!!" />
       <article className="game-description-container">
         <p className="game-description">
           Test your general knowledge, challenge your friends and have fun!

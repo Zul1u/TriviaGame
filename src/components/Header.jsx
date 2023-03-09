@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { getPlayerInfoStorage } from '../helpers/playerInfoStorage';
 
-export default function Header({ homePage }) {
-  const playerInfo = !homePage
+export default function Header({ title }) {
+  const playerInfo = !title
     ? getPlayerInfoStorage()
     : { name: '', score: 0, question: '1/10' };
 
@@ -10,9 +10,9 @@ export default function Header({ homePage }) {
 
   return (
     <header className="header-container">
-      {homePage ? (
+      {title ? (
         <div className="header-infos">
-          <h1 className="title">Welcome to Trivia Game!!</h1>
+          <h1 className="title">{title}</h1>
         </div>
       ) : (
         <div className="header-infos">
@@ -26,9 +26,9 @@ export default function Header({ homePage }) {
 }
 
 Header.propTypes = {
-  homePage: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 Header.defaultProps = {
-  homePage: false,
+  title: null,
 };
