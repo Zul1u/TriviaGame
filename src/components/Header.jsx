@@ -4,9 +4,9 @@ import { getPlayerInfoStorage } from '../helpers/localStorage/playerInfoStorage'
 export default function Header({ title }) {
   const playerInfo = !title
     ? getPlayerInfoStorage()
-    : { name: '', score: 0, question: '1/10' };
+    : { name: '', score: 0, questionReport: { questionNumber: 1 } };
 
-  const { name, score, question } = playerInfo;
+  const { name, score, questionReport } = playerInfo;
 
   return (
     <header className="header-container">
@@ -18,7 +18,7 @@ export default function Header({ title }) {
         <div className="header-infos">
           <span>{name}</span>
           <span>{`Score: ${score}`}</span>
-          <span>{`Question: ${question}`}</span>
+          <span>{`Question: ${questionReport.questionNumber}/10`}</span>
         </div>
       )}
     </header>

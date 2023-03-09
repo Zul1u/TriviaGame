@@ -24,6 +24,7 @@ export default function Game() {
   const [isCorrectAnswer, setIsCorrectAnswer] = useState('');
   const [questions, setQuestions] = useState([]);
   const [disabled, setDisabled] = useState(false);
+  const [playerAnswer, setPlayerAnswer] = useState({});
   const navigate = useNavigate();
   const QUESTION = id - 1;
   const NEXT_QUESTION = id <= questions.length - 1;
@@ -54,9 +55,9 @@ export default function Game() {
     setRenderButtonNext(true);
     correctAnswer();
 
-    const isCorrect = curiosity.answers.filter(({ answer }) => answer === value);
+    setPlayerAnswer(curiosity.answers.filter(({ answer }) => answer === value)[0]);
 
-    if (isCorrect[0].correct === true) {
+    if (playerAnswer.correct) {
       const score = sumPlayerScore(curiosity.difficulty, timerSeconds);
       updatePlayerScore(score);
     }
@@ -68,7 +69,7 @@ export default function Game() {
     setStopTimer(false);
     setRenderButtonNext(false);
     if (NEXT_QUESTION) {
-      updatePlayerQuestion(NEXT_ID);
+      updatePlayerQuestion({ hit: playerAnswer.correct, questionNumber: NEXT_ID });
       return navigate(`/game/question/${NEXT_ID}`);
     }
     updateScoreboardStorage();

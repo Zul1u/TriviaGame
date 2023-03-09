@@ -1,7 +1,11 @@
 import { getPlayerInfoStorage } from './playerInfoStorage';
 
+function getScoreboardStorage() {
+  return JSON.parse(localStorage.getItem('socoreboard'));
+}
+
 function createScoreboardStorage() {
-  const socoreboard = localStorage.getItem('socoreboard');
+  const socoreboard = getScoreboardStorage();
   const playerInfo = getPlayerInfoStorage();
 
   if (!socoreboard && playerInfo) {
@@ -9,10 +13,10 @@ function createScoreboardStorage() {
 
     localStorage.setItem('socoreboard', JSON.stringify(newStorage));
   }
-}
 
-function getScoreboardStorage() {
-  return JSON.parse(localStorage.getItem('socoreboard'));
+  if (!socoreboard && !playerInfo) {
+    localStorage.setItem('socoreboard', JSON.stringify([]));
+  }
 }
 
 function updateScoreboardStorage() {

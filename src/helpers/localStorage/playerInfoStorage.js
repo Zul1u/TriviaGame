@@ -1,6 +1,11 @@
-function createPlayerInfoStorage(name = '', score = 0, question = '1/10') {
+const defaultQuestionReportValue = {
+  questionNumber: 1,
+  hitNumber: 0,
+};
+
+function createPlayerInfoStorage(name = '', score = 0, questionReport = defaultQuestionReportValue) {
   const storageData = localStorage.getItem('playerInfo');
-  const newStorage = { name, score, question };
+  const newStorage = { name, score, questionReport };
 
   if (!storageData) {
     return localStorage.setItem('playerInfo', JSON.stringify(newStorage));
@@ -16,10 +21,12 @@ function getPlayerInfoStorage() {
   return JSON.parse(localStorage.getItem('playerInfo'));
 }
 
-function updatePlayerScore(questionScore) {
-  const storageData = JSON.parse(localStorage.getItem('playerInfo'));
-  const newScore = questionScore + storageData.score;
+function updatePlayerScore(score) {
+  const storageData = getPlayerInfoStorage();
+
   if (storageData) {
+    const newScore = score + storageData.score;
+
     localStorage.setItem(
       'playerInfo',
       JSON.stringify({ ...storageData, score: newScore }),
@@ -27,12 +34,19 @@ function updatePlayerScore(questionScore) {
   }
 }
 
-function updatePlayerQuestion(numberQuestion) {
-  const storageData = JSON.parse(localStorage.getItem('playerInfo'));
+function updatePlayerQuestion({ hit, questionNumber }) {
+  const storageData = getPlayerInfoStorage();
+
   if (storageData) {
+    const { questionReport } = storageData;
+    const newQuestionReport = {
+      questionNumber,
+      hitNumber: hit ? questionReport.hitNumber + 1 : questionReport.hitNumber,
+    };
+
     localStorage.setItem(
       'playerInfo',
-      JSON.stringify({ ...storageData, question: `${numberQuestion}/10` }),
+      JSON.stringify({ ...storageData, questionReport: newQuestionReport }),
     );
   }
 }
