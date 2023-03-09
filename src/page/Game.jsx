@@ -55,9 +55,10 @@ export default function Game() {
     setRenderButtonNext(true);
     correctAnswer();
 
-    setPlayerAnswer(curiosity.answers.filter(({ answer }) => answer === value)[0]);
+    const answerPlayer = curiosity.answers.filter(({ answer }) => answer === value)[0];
+    setPlayerAnswer(answerPlayer);
 
-    if (playerAnswer.correct) {
+    if (answerPlayer.correct) {
       const score = sumPlayerScore(curiosity.difficulty, timerSeconds);
       updatePlayerScore(score);
     }
@@ -73,6 +74,7 @@ export default function Game() {
       return navigate(`/game/question/${NEXT_ID}`);
     }
     updateScoreboardStorage();
+    setQuestions([]);
     return navigate('/scoreboard');
   };
 
