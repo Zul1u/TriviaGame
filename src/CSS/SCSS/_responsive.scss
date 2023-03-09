@@ -6,7 +6,7 @@
 
   //ALL PAGES
   .main-container {
-    width: 100%;
+    width: 100vh;
   }
 
   //BUTTONS
@@ -47,12 +47,5 @@
 
   .questions-answered {
     display: none;
-  }
-}
-
-@media (max-height: 720px) {
-  //ALL PAGES
-  .main-container {
-    height: 100%;
   }
 }

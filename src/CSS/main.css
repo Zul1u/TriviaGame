@@ -253,12 +253,25 @@ button {
   color: #fd582d;
 }
 
+.player-report-card-container {
+  background-color: rgba(38, 42, 47, 0.7);
+}
+
+.player-report-list {
+  background-color: rgba(38, 42, 47, 0.7);
+  padding-bottom: 2rem;
+}
+
+.scoreboard-btn-container {
+  display: flex;
+}
+
 @media (max-width: 700px) {
   .header-container {
     margin-bottom: 2rem;
   }
   .main-container {
-    width: 100%;
+    width: 100vh;
   }
   .home-bnt-container {
     margin-top: 5rem;
@@ -281,10 +294,5 @@ button {
   }
   .questions-answered {
     display: none;
-  }
-}
-@media (max-height: 720px) {
-  .main-container {
-    height: 100%;
   }
 }/*# sourceMappingURL=main.css.map */
