@@ -221,6 +221,36 @@ button {
   font-size: 6rem;
 }
 
+.playerReport-card {
+  box-shadow: 0 2px 7px #16181b;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+.playerReport-card div {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.3rem 0;
+}
+.playerReport-card p {
+  font-size: 2rem;
+}
+
+.player-score-container p {
+  color: #ffd60a;
+}
+
+.questions-answered {
+  color: #ffd166;
+}
+
+.right-answers {
+  color: #00cd00;
+}
+
+.wrong-answers {
+  color: #fd582d;
+}
+
 @media (max-width: 700px) {
   .header-container {
     margin-bottom: 2rem;

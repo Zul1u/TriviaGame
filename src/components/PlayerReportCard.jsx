@@ -8,14 +8,14 @@ export default function PlayerReportCard({ playerReport }) {
   } = playerReport;
   return (
     <article className="playerReport-card">
-      <div>
-        <p>{`Nickname: ${name}`}</p>
+      <div className="player-score-container">
+        <p>{`${name}`}</p>
         <p>{`Score: ${score}`}</p>
       </div>
       <div>
-        <p>{`Questions answered: ${questionNumber}`}</p>
-        <p>{`Hits: ${hitNumber}`}</p>
-        <p>{`Mistakes: ${questionNumber - hitNumber}`}</p>
+        <p className="questions-answered">{`Questions answered: ${questionNumber}`}</p>
+        <p className="right-answers">{`Hits: ${hitNumber}`}</p>
+        <p className="wrong-answers">{`Mistakes: ${questionNumber - hitNumber}`}</p>
       </div>
     </article>
   );

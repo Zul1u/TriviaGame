@@ -1,0 +1,32 @@
+.playerReport-card {
+  box-shadow: 0 2px 7px $backgrounColor-03;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  div {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.3rem 0;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+}
+
+.player-score-container {
+  p {
+    color: $playerScore;
+  }
+}
+
+.questions-answered {
+  color: $questionsAnswered;
+}
+
+.right-answers {
+  color: lighten($answerCorrect, 15);
+}
+
+.wrong-answers {
+  color: lighten($answerIncorrect, 15);
+}
