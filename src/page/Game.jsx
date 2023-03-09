@@ -5,7 +5,8 @@ import Header from '../components/Header';
 import Timer from '../components/Timer';
 import Context from '../context/Context';
 import TimerContext from '../context/timer/TimerContext';
-import { updatePlayerQuestion, updatePlayerScore } from '../helpers/playerInfoStorage';
+import { updatePlayerQuestion, updatePlayerScore } from '../helpers/localStorage/playerInfoStorage';
+import { updateScoreboardStorage } from '../helpers/localStorage/scoreboardStorage';
 import shuffleAnswers from '../helpers/shuffleAnswers';
 import sumPlayerScore from '../helpers/sumPlayerScore';
 
@@ -66,10 +67,11 @@ export default function Game() {
     setStartTimer(true);
     setStopTimer(false);
     setRenderButtonNext(false);
-    updatePlayerQuestion(NEXT_ID);
     if (NEXT_QUESTION) {
+      updatePlayerQuestion(NEXT_ID);
       return navigate(`/game/question/${NEXT_ID}`);
     }
+    updateScoreboardStorage();
     return navigate('/scoreboard');
   };
 

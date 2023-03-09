@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { getPlayerInfoStorage } from '../helpers/playerInfoStorage';
+import { getPlayerInfoStorage } from '../helpers/localStorage/playerInfoStorage';
 
 export default function Header({ title }) {
   const playerInfo = !title

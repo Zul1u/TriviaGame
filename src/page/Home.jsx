@@ -7,7 +7,8 @@ import Modal from '../components/Modal';
 import {
   createPlayerInfoStorage,
   deletePlayerInfoStorage,
-} from '../helpers/playerInfoStorage';
+} from '../helpers/localStorage/playerInfoStorage';
+import { createScoreboardStorage } from '../helpers/localStorage/scoreboardStorage';
 
 function Home() {
   const [openModal, setOpenModal] = useState(false);
@@ -15,11 +16,16 @@ function Home() {
   const navigate = useNavigate();
   const SUBMIT = true;
 
-  const HandleClickPlayButton = (e) => {
+  const handleClickPlayButton = (e) => {
     e.preventDefault();
     deletePlayerInfoStorage();
     createPlayerInfoStorage(inputValue);
     navigate('/game/question/1');
+  };
+
+  const handleClickScoreboardButton = () => {
+    createScoreboardStorage();
+    navigate('/scoreboard');
   };
 
   return (
@@ -32,7 +38,7 @@ function Home() {
       </article>
       <section className="home-bnt-container">
         <Button handleClick={() => setOpenModal(true)}>Start New Game</Button>
-        <Button handleClick={() => navigate('/scoreboard')}>Scoreboard</Button>
+        <Button handleClick={handleClickScoreboardButton}>Scoreboard</Button>
       </section>
       <Modal isOpen={openModal} isClosed={() => setOpenModal(false)}>
         <form>
@@ -43,7 +49,7 @@ function Home() {
               labelValue="Nick Name:"
               placeholderValue="Enter your nickname"
             />
-            <Button submitButton={SUBMIT} handleClick={HandleClickPlayButton}>
+            <Button submitButton={SUBMIT} handleClick={handleClickPlayButton}>
               Play
             </Button>
           </div>
