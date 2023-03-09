@@ -7,7 +7,7 @@ export default function PlayerReportCard({ playerReport }) {
     questionReport: { questionNumber, hitNumber },
   } = playerReport;
   return (
-    <article className="playerReport-card">
+    <article className="player-report-card">
       <div className="player-score-container">
         <p>{`${name}`}</p>
         <p>{`Score: ${score}`}</p>

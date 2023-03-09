@@ -4,7 +4,7 @@
     margin-bottom: 2rem;
   }
 
-  //HOME PAGE
+  //ALL PAGES
   .main-container {
     width: 100%;
   }
@@ -35,5 +35,24 @@
   //MODAL COMPONENT
   .bg-modal {
     width: 100%;
+  }
+
+  //PLAYER REPORT CARD
+  .player-report-card {
+    p {
+      max-width: 20rem;
+      word-break: break-word;
+    }
+  }
+
+  .questions-answered {
+    display: none;
+  }
+}
+
+@media (max-height: 720px) {
+  //ALL PAGES
+  .main-container {
+    height: 100%;
   }
 }

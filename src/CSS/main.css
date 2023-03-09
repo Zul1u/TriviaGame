@@ -221,18 +221,20 @@ button {
   font-size: 6rem;
 }
 
-.playerReport-card {
+.player-report-card {
   box-shadow: 0 2px 7px #16181b;
   margin-top: 2rem;
   padding: 1rem 0;
+  width: 100%;
 }
-.playerReport-card div {
+.player-report-card div {
   display: flex;
   justify-content: space-around;
   padding: 0.3rem 0;
 }
-.playerReport-card p {
+.player-report-card p {
   font-size: 2rem;
+  text-align: center;
 }
 
 .player-score-container p {
@@ -272,5 +274,17 @@ button {
   }
   .bg-modal {
     width: 100%;
+  }
+  .player-report-card p {
+    max-width: 20rem;
+    word-break: break-word;
+  }
+  .questions-answered {
+    display: none;
+  }
+}
+@media (max-height: 720px) {
+  .main-container {
+    height: 100%;
   }
 }/*# sourceMappingURL=main.css.map */
