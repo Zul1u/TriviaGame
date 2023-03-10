@@ -32,7 +32,9 @@ function setLocalStorage(id, data) {
 }
 
 function getItemLocalStorage(mockId) {
-  return JSON.parse(localStorage.getItem(mockId));
+  const storage = localStorage.getItem(mockId);
+  if (storage) return JSON.parse(storage);
+  return null;
 }
 
 function deleteLocalStorage(mockId) {
@@ -44,9 +46,15 @@ const defaultQuestionReportValue = {
   hitNumber: 0,
 };
 
+const questionReportFinalValue = {
+  questionNumber: 2,
+  hitNumber: 2,
+};
+
 export {
   setLocalStorage,
   getItemLocalStorage,
   deleteLocalStorage,
   defaultQuestionReportValue,
+  questionReportFinalValue,
 };
