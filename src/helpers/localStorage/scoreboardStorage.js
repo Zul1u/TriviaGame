@@ -1,41 +1,41 @@
 import { getPlayerInfoStorage } from './playerInfoStorage';
 
 function getScoreboardStorage() {
-  const socoreboard = localStorage.getItem('socoreboard');
-  if (socoreboard) return JSON.parse(socoreboard);
+  const scoreboard = localStorage.getItem('scoreboard');
+  if (scoreboard) return JSON.parse(scoreboard);
   return null;
 }
 
 function createScoreboardStorage() {
-  const socoreboard = getScoreboardStorage();
+  const scoreboard = getScoreboardStorage();
   const playerInfo = getPlayerInfoStorage();
 
-  if (!socoreboard && playerInfo) {
+  if (!scoreboard && playerInfo) {
     const newStorage = [playerInfo];
 
-    return localStorage.setItem('socoreboard', JSON.stringify(newStorage));
+    return localStorage.setItem('scoreboard', JSON.stringify(newStorage));
   }
 
-  if (!socoreboard && !playerInfo) {
-    return localStorage.setItem('socoreboard', JSON.stringify([]));
+  if (!scoreboard && !playerInfo) {
+    return localStorage.setItem('scoreboard', JSON.stringify([]));
   }
 
   throw new Error('Oops! Something went wrong :(');
 }
 
 function updateScoreboardStorage() {
-  const socoreboard = getScoreboardStorage();
+  const scoreboard = getScoreboardStorage();
 
-  if (socoreboard) {
+  if (scoreboard) {
     const playerInfo = getPlayerInfoStorage();
-    const newStorage = [...socoreboard, playerInfo];
-    return localStorage.setItem('socoreboard', JSON.stringify(newStorage));
+    const newStorage = [...scoreboard, playerInfo];
+    return localStorage.setItem('scoreboard', JSON.stringify(newStorage));
   }
   return createScoreboardStorage();
 }
 
 function deleteScoreboardStorage() {
-  localStorage.removeItem('socoreboard');
+  localStorage.removeItem('scoreboard');
 }
 
 export {
