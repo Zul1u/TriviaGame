@@ -13,14 +13,12 @@ function createScoreboardStorage() {
   if (!scoreboard && playerInfo) {
     const newStorage = [playerInfo];
 
-    return localStorage.setItem('scoreboard', JSON.stringify(newStorage));
+    localStorage.setItem('scoreboard', JSON.stringify(newStorage));
   }
 
   if (!scoreboard && !playerInfo) {
-    return localStorage.setItem('scoreboard', JSON.stringify([]));
+    localStorage.setItem('scoreboard', JSON.stringify([]));
   }
-
-  throw new Error('Oops! Something went wrong :(');
 }
 
 function updateScoreboardStorage() {
