@@ -39,4 +39,14 @@ function deleteLocalStorage(mockId) {
   return localStorage.removeItem(mockId);
 }
 
-export { setLocalStorage, getItemLocalStorage, deleteLocalStorage };
+const defaultQuestionReportValue = {
+  questionNumber: 1,
+  hitNumber: 0,
+};
+
+export {
+  setLocalStorage,
+  getItemLocalStorage,
+  deleteLocalStorage,
+  defaultQuestionReportValue,
+};

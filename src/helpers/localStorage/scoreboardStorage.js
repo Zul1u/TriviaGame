@@ -1,7 +1,9 @@
 import { getPlayerInfoStorage } from './playerInfoStorage';
 
 function getScoreboardStorage() {
-  return JSON.parse(localStorage.getItem('socoreboard'));
+  const socoreboard = localStorage.getItem('socoreboard');
+  if (socoreboard) return JSON.parse(socoreboard);
+  return null;
 }
 
 function createScoreboardStorage() {
@@ -11,12 +13,14 @@ function createScoreboardStorage() {
   if (!socoreboard && playerInfo) {
     const newStorage = [playerInfo];
 
-    localStorage.setItem('socoreboard', JSON.stringify(newStorage));
+    return localStorage.setItem('socoreboard', JSON.stringify(newStorage));
   }
 
   if (!socoreboard && !playerInfo) {
-    localStorage.setItem('socoreboard', JSON.stringify([]));
+    return localStorage.setItem('socoreboard', JSON.stringify([]));
   }
+
+  throw new Error('Oops! Something went wrong :(');
 }
 
 function updateScoreboardStorage() {
