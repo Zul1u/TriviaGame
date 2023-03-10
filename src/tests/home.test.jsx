@@ -1,25 +1,32 @@
 import { describe, expect, it } from 'vitest';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Home from '../page/Home';
+import App from '../App';
 import renderWithRouter from './helpers/renderWithRouter';
 
 describe('Checks that all elements are on the screen', () => {
+  it('checks if when entering the path "/" you are redirected to the path "/home"', async () => {
+    renderWithRouter(<App />, { route: '/' });
+    expect(window.location.pathname).toBe('/home');
+  });
+
   it('Header/title', () => {
-    renderWithRouter(<Home />);
+    renderWithRouter(<App />, { route: '/home' });
     const title = screen.getByRole('heading', {
       level: 1,
       name: 'Welcome to Trivia Game!!',
     });
     expect(title).toBeInTheDocument();
   });
+
   it('Game description', () => {
-    renderWithRouter(<Home />);
+    renderWithRouter(<App />, { route: '/home' });
     const description = screen.getByText(/Test your general knowledge/i);
     expect(description).toBeInTheDocument();
   });
+
   it('Buttons', () => {
-    renderWithRouter(<Home />);
+    renderWithRouter(<App />, { route: '/home' });
     const buttonStart = screen.getByRole('button', {
       name: 'Start New Game',
     });
@@ -33,7 +40,7 @@ describe('Checks that all elements are on the screen', () => {
 
 describe('Check the functionality of the buttons', () => {
   it('Scoreboard Button', async () => {
-    renderWithRouter(<Home />, { route: '/home' });
+    renderWithRouter(<App />, { route: '/home' });
 
     const buttonScoreboard = screen.getByRole('button', {
       name: 'Scoreboard',
@@ -46,7 +53,7 @@ describe('Check the functionality of the buttons', () => {
   });
 
   it('Button Start New Game', async () => {
-    renderWithRouter(<Home />, { route: '/home' });
+    renderWithRouter(<App />, { route: '/home' });
 
     const buttonStart = screen.getByRole('button', {
       name: 'Start New Game',
@@ -74,14 +81,12 @@ describe('Check the functionality of the buttons', () => {
     expect(buttonCloseModal).not.toBeInTheDocument();
   });
 
-  it('Button Play', async () => {
-    renderWithRouter(<Home />, { route: '/home' });
+  it('Verify that all items in the modal are working correctly', async () => {
+    renderWithRouter(<App />, { route: '/home' });
 
     const buttonStart = screen.getByRole('button', {
       name: 'Start New Game',
     });
-
-    expect(buttonStart).toBeInTheDocument();
 
     await userEvent.click(buttonStart);
 
@@ -91,6 +96,10 @@ describe('Check the functionality of the buttons', () => {
     });
 
     await userEvent.type(nickNameInput, 'Zu1lu');
+
+    const nickName = screen.getByDisplayValue('Zu1lu');
+    expect(nickName).toBeInTheDocument();
+
     await userEvent.click(buttonPlay);
 
     expect(window.location.pathname).toBe('/game/question/1');
