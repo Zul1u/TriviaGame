@@ -37,6 +37,10 @@ git clone https://github.com/Zul1u/TriviaGame.git
 ## Executando o Projeto
 Para executar este projeto, basta executar o comando no terminal:
 ```
+npm install
+```
+e depois:
+```
 npm start
 ```
 Agora, basta abrir seu navegador e acessar a porta local que foi exibida no seu terminal.
