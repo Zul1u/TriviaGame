@@ -1,10 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 
 export default function Instructions() {
+  const navigate = useNavigate();
+  const HEADER_NAV = true;
+
   return (
     <>
-      <Header title="How To PLay" />
+      <Header
+        title="How To PLay"
+        headerNav={{ nav: HEADER_NAV, handleNavClick: () => navigate('/home') }}
+      />
       <article className="game-description-container">
         <p className="game-description">
           The Trivia Game is a question-and-answer game about general knowledge. For each
@@ -15,7 +22,7 @@ export default function Instructions() {
           played.
         </p>
       </article>
-      <section>
+      <section className="difficulty-card-container">
         <h3 className="instruction-subtitle">
           To determine the difficulty of the question, simply check the color of the
           timer.

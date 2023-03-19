@@ -13,7 +13,13 @@ export default function Timer({ disabledBtn, correctAnswer }) {
     timerSeconds,
     setTimerSeconds,
     setStartTimer,
+    setStopTimer,
   } = useContext(TimerContext);
+
+  useEffect(() => {
+    setStopTimer(false);
+    setStartTimer(true);
+  }, []);
 
   useEffect(() => {
     if (startTimer) {
