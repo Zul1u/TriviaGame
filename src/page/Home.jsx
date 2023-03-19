@@ -26,6 +26,7 @@ function Home() {
       <section className="home-bnt-container">
         <Button handleClick={() => setOpenModal(true)}>Start New Game</Button>
         <Button handleClick={handleClickScoreboardButton}>Scoreboard</Button>
+        <Button handleClick={() => navigate('/instructions')}>How To Play</Button>
       </section>
       <StartGameModal
         openModal={openModal}
