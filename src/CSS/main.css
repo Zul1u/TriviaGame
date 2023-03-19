@@ -119,6 +119,12 @@ button {
 }
 .header-nav .to-go-home-screen {
   font-size: 1.6rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.header-nav .to-go-home-screen:hover {
+  cursor: pointer;
+  text-decoration-color: #00a5cf;
 }
 
 .home-bnt-container {
@@ -302,6 +308,10 @@ button {
   text-shadow: 4px 4px 2px #16181b;
 }
 
+.difficulty-card-container {
+  padding-bottom: 0.5rem;
+}
+
 .difficulty-card {
   box-shadow: 0 2px 7px #16181b;
   align-items: center;
@@ -334,6 +344,9 @@ button {
 @media (max-width: 700px) {
   .header-container {
     margin-bottom: 2rem;
+  }
+  .header-nav .to-go-home-screen {
+    text-decoration-color: #00a5cf;
   }
   .main-container {
     width: 100%;
