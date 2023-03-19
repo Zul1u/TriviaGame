@@ -3,9 +3,13 @@ const defaultQuestionReportValue = {
   hitNumber: 0,
 };
 
+const idGenerate = () => Math.floor(Date.now() * Math.random()).toString(36);
+
 function createPlayerInfoStorage(name = '', score = 0, questionReport = defaultQuestionReportValue) {
   const storageData = localStorage.getItem('playerInfo');
-  const newStorage = { name, score, questionReport };
+  const newStorage = {
+    name, score, questionReport, id: idGenerate(),
+  };
 
   if (!storageData) {
     return localStorage.setItem('playerInfo', JSON.stringify(newStorage));

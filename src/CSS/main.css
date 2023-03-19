@@ -269,6 +269,10 @@ button {
   text-align: center;
 }
 
+.current-player {
+  box-shadow: 0px 2px 7px #b6ccfe;
+}
+
 .player-score-container p {
   color: #ffd60a;
 }
