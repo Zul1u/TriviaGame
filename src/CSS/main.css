@@ -18,17 +18,14 @@
 
 .difficulty-hard {
   color: #ff74ff;
-  font-weight: 600;
 }
 
 .difficulty-medium {
   color: #ffc300;
-  font-weight: 600;
 }
 
 .difficulty-easy {
   color: #4d908e;
-  font-weight: 600;
 }
 
 :root {
@@ -248,9 +245,10 @@ button {
 
 .timer-container {
   text-align: center;
+  padding: 0.5rem;
   width: 100%;
 }
-.timer-container span {
+.timer-container .timer {
   display: block;
   font-size: 6rem;
 }
@@ -335,9 +333,8 @@ button {
 }
 .difficulty-card .instruction-parentheses {
   color: #00a5cf;
-  font-weight: 600;
 }
-.difficulty-card .instruction-timer-value {
+.difficulty-card span {
   font-weight: 600;
 }
 
