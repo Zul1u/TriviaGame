@@ -5,6 +5,7 @@ import Provider from './context/Provider';
 import Game from './page/Game';
 import TimerProvider from './context/timer/TimerProvider';
 import Scoreboard from './page/Scoreboard';
+import Instructions from './page/Instructions';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/game/question/:id" element={<Game />} />
             <Route path="/scoreboard" element={<Scoreboard />} />
+            <Route path="/instructions" element={<Instructions />} />
           </Routes>
         </main>
       </TimerProvider>

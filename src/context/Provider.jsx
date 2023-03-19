@@ -21,6 +21,7 @@ export default function Provider({ children }) {
     () => ({
       fetchTriviaApi,
       questionData,
+      setQuestionData,
       renderButtonNext,
       setRenderButtonNext,
     }),

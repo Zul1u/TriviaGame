@@ -4,9 +4,19 @@
     margin-bottom: 2rem;
   }
 
+  .header-nav {
+    .to-go-home-screen {
+      text-decoration-color: $parentheses;
+    }
+  }
+
   //ALL PAGES
   .main-container {
     width: 100%;
+  }
+
+  body {
+    background: $backgrounColor-04;
   }
 
   //BUTTONS

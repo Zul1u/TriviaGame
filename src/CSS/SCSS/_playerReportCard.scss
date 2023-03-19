@@ -15,6 +15,10 @@
   }
 }
 
+.current-player {
+  box-shadow: 0px 2px 7px $lastPlayerPlacement;
+}
+
 .player-score-container {
   p {
     color: $playerScore;

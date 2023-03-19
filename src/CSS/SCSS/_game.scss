@@ -17,8 +17,9 @@
 
 .timer-container {
   text-align: center;
+  padding: 0.5rem;
   width: 100%;
-  span {
+  .timer {
     display: block;
     font-size: 6rem;
   }

@@ -3,18 +3,48 @@
 $backgrounColor-01: #343a40;
 $backgrounColor-02: rgba(33, 37, 41, 0.7);
 $backgrounColor-03: darken(#212529, 5);
+$backgrounColor-04: lighten(#212529, 2);;
+
 $textColor-01: #e9ecef;
 $bntColor-01: #0d1b2a;
+$lastPlayerPlacement : #b6ccfe;
 $answerCorrect: #008000;
 $answerIncorrect: #dc2f02;
 $questionsAnswered: #ffd166;
 $playerScore: #ffd60a;
 
+$difficulty-hard: #ff74ff;
+$difficulty-medium: #ffc300;
+$difficulty-easy: #4d908e;
+$parentheses: #00a5cf;
+
 .main-container {
-  background-color: $backgrounColor-02;
+  background-color: $backgrounColor-04;
   height: 100vh;
   margin: auto;
   width: 70rem;
+}
+
+.game-description-container {
+  text-align: center;
+  .game-description {
+    color: $textColor-01;
+    font-size: 2rem;
+    padding: 3rem 1rem;
+    box-shadow: 0 5px 10px $backgrounColor-03;
+  }
+}
+
+.difficulty-hard {
+  color: $difficulty-hard;
+}
+
+.difficulty-medium {
+  color: $difficulty-medium;
+}
+
+.difficulty-easy {
+  color: $difficulty-easy;
 }
 
 :root {

@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import TimerContext from '../context/timer/TimerContext';
 import { createPlayerInfoStorage, deletePlayerInfoStorage } from '../helpers/localStorage/playerInfoStorage';
 import Button from './Button';
 import Input from './Input';
@@ -11,11 +13,18 @@ export default function StartGameModal({
   inputValue,
   setInputValue,
 }) {
+  const {
+    setStopTimer,
+    setStartTimer,
+  } = useContext(TimerContext);
+
   const navigate = useNavigate();
   const SUBMIT = true;
 
   const handleClickPlayButton = (e) => {
     e.preventDefault();
+    setStartTimer(true);
+    setStopTimer(false);
     deletePlayerInfoStorage();
     createPlayerInfoStorage(inputValue);
     navigate('/game/question/1');

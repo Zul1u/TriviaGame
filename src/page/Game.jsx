@@ -5,7 +5,11 @@ import Header from '../components/Header';
 import Timer from '../components/Timer';
 import Context from '../context/Context';
 import TimerContext from '../context/timer/TimerContext';
-import { updatePlayerQuestion, updatePlayerScore } from '../helpers/localStorage/playerInfoStorage';
+import {
+  deletePlayerInfoStorage,
+  updatePlayerQuestion,
+  updatePlayerScore,
+} from '../helpers/localStorage/playerInfoStorage';
 import { updateScoreboardStorage } from '../helpers/localStorage/scoreboardStorage';
 import shuffleAnswers from '../helpers/shuffleAnswers';
 import sumPlayerScore from '../helpers/sumPlayerScore';
@@ -14,6 +18,7 @@ export default function Game() {
   const {
     fetchTriviaApi,
     questionData,
+    setQuestionData,
     setRenderButtonNext,
     renderButtonNext,
   } = useContext(Context);
@@ -26,6 +31,8 @@ export default function Game() {
   const [disabled, setDisabled] = useState(false);
   const [playerAnswer, setPlayerAnswer] = useState({});
   const navigate = useNavigate();
+
+  const HEADER_NAV = true;
   const QUESTION = id - 1;
   const NEXT_QUESTION = id <= questions.length - 1;
   const NEXT_ID = Number(id) + 1;
@@ -64,6 +71,14 @@ export default function Game() {
     }
   };
 
+  const handleNavClick = async () => {
+    await setStopTimer(true);
+    await setStartTimer(false);
+    setQuestionData([]);
+    deletePlayerInfoStorage();
+    navigate('/home');
+  };
+
   const handleClickBtnNext = () => {
     setDisabled(false);
     setStartTimer(true);
@@ -74,16 +89,20 @@ export default function Game() {
       return navigate(`/game/question/${NEXT_ID}`);
     }
     updateScoreboardStorage();
-    setQuestions([]);
+    setQuestionData([]);
     return navigate('/scoreboard');
   };
 
   return (
     <>
-      <Header />
+      <Header headerNav={{ nav: HEADER_NAV, handleNavClick }} />
       {curiosity && (
         <div>
-          <Timer disabledBtn={setDisabled} correctAnswer={correctAnswer} />
+          <Timer
+            disabledBtn={setDisabled}
+            correctAnswer={correctAnswer}
+            hardship={curiosity.difficulty}
+          />
           <div className="game-description-container">
             <p className="game-description">{curiosity.question}</p>
           </div>
