@@ -1,9 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Metal+Mania&family=Rajdhani:wght@500&display=swap");
 .main-container {
-  background-color: rgba(33, 37, 41, 0.7);
+  background-color: #262a2f;
   height: 100vh;
   margin: auto;
   width: 70rem;
+}
+
+.game-description-container {
+  text-align: center;
+}
+.game-description-container .game-description {
+  color: #e9ecef;
+  font-size: 2rem;
+  padding: 3rem 1rem;
+  box-shadow: 0 5px 10px #16181b;
+}
+
+.difficulty-hard {
+  color: #ff74ff;
+  font-weight: 600;
+}
+
+.difficulty-medium {
+  color: #ffc300;
+  font-weight: 600;
+}
+
+.difficulty-easy {
+  color: #4d908e;
+  font-weight: 600;
 }
 
 :root {
@@ -74,23 +99,26 @@ button {
   font-size: 1.8rem;
   font-weight: 600;
 }
-.header-infos .title {
+
+.simple-header-infos {
+  padding: 3rem 0;
+  display: flex;
+  justify-content: center;
+}
+.simple-header-infos .title {
   text-shadow: 3px 3px #780000;
   color: #e9ecef;
   font-family: "Metal Mania", Arial, Helvetica, sans-serif;
   font-size: 4.5rem;
-  padding: 1rem 0 1rem;
   text-align: center;
 }
 
-.game-description-container {
+.header-nav {
+  padding-bottom: 1rem;
   text-align: center;
 }
-.game-description-container .game-description {
-  color: #e9ecef;
-  font-size: 2rem;
-  padding: 3rem 1rem;
-  box-shadow: 0 5px 10px #16181b;
+.header-nav .to-go-home-screen {
+  font-size: 1.6rem;
 }
 
 .home-bnt-container {
@@ -254,16 +282,53 @@ button {
 }
 
 .player-report-card-container {
-  background-color: rgba(38, 42, 47, 0.7);
+  background-color: #262a2f;
 }
 
 .player-report-list {
-  background-color: rgba(38, 42, 47, 0.7);
+  background-color: #262a2f;
   padding-bottom: 2rem;
 }
 
 .scoreboard-btn-container {
   display: flex;
+}
+
+.instruction-subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 2rem;
+  text-align: center;
+  text-shadow: 4px 4px 2px #16181b;
+}
+
+.difficulty-card {
+  box-shadow: 0 2px 7px #16181b;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.difficulty-card .timer-example {
+  font-size: 3.5rem;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+.difficulty-card div {
+  padding: 0 2rem;
+}
+.difficulty-card .difficulty-description {
+  font-size: 2rem;
+}
+.difficulty-card .scoring-calculation-description {
+  font-size: 2rem;
+}
+.difficulty-card .instruction-parentheses {
+  color: #00a5cf;
+  font-weight: 600;
+}
+.difficulty-card .instruction-timer-value {
+  font-weight: 600;
 }
 
 @media (max-width: 700px) {
@@ -272,6 +337,9 @@ button {
   }
   .main-container {
     width: 100%;
+  }
+  body {
+    background: #262a2f;
   }
   .home-bnt-container {
     margin-top: 5rem;
