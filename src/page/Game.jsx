@@ -5,7 +5,11 @@ import Header from '../components/Header';
 import Timer from '../components/Timer';
 import Context from '../context/Context';
 import TimerContext from '../context/timer/TimerContext';
-import { deletePlayerInfoStorage, updatePlayerQuestion, updatePlayerScore } from '../helpers/localStorage/playerInfoStorage';
+import {
+  deletePlayerInfoStorage,
+  updatePlayerQuestion,
+  updatePlayerScore,
+} from '../helpers/localStorage/playerInfoStorage';
 import { updateScoreboardStorage } from '../helpers/localStorage/scoreboardStorage';
 import shuffleAnswers from '../helpers/shuffleAnswers';
 import sumPlayerScore from '../helpers/sumPlayerScore';
@@ -94,7 +98,11 @@ export default function Game() {
       <Header headerNav={{ nav: HEADER_NAV, handleNavClick }} />
       {curiosity && (
         <div>
-          <Timer disabledBtn={setDisabled} correctAnswer={correctAnswer} />
+          <Timer
+            disabledBtn={setDisabled}
+            correctAnswer={correctAnswer}
+            hardship={curiosity.difficulty}
+          />
           <div className="game-description-container">
             <p className="game-description">{curiosity.question}</p>
           </div>

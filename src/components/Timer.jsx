@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Context from '../context/Context';
 import TimerContext from '../context/timer/TimerContext';
 
-export default function Timer({ disabledBtn, correctAnswer }) {
+export default function Timer({ disabledBtn, correctAnswer, hardship }) {
   const [timerId, setTimerId] = useState(0);
   const { setRenderButtonNext } = useContext(Context);
 
@@ -13,13 +13,7 @@ export default function Timer({ disabledBtn, correctAnswer }) {
     timerSeconds,
     setTimerSeconds,
     setStartTimer,
-    setStopTimer,
   } = useContext(TimerContext);
-
-  useEffect(() => {
-    setStopTimer(false);
-    setStartTimer(true);
-  }, []);
 
   useEffect(() => {
     if (startTimer) {
@@ -45,7 +39,11 @@ export default function Timer({ disabledBtn, correctAnswer }) {
 
   return (
     <div className="timer-container" data-testid="timer-component">
-      <span>{timerSeconds}</span>
+      <span className={`timer difficulty-${hardship}`}>{timerSeconds}</span>
+      <p>
+        Difficulty:
+        <span className={`difficulty-${hardship}`}>{` ${hardship}`}</span>
+      </p>
     </div>
   );
 }
@@ -53,4 +51,5 @@ export default function Timer({ disabledBtn, correctAnswer }) {
 Timer.propTypes = {
   disabledBtn: PropTypes.func.isRequired,
   correctAnswer: PropTypes.func.isRequired,
+  hardship: PropTypes.string.isRequired,
 };
