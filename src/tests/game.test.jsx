@@ -3,14 +3,13 @@ import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './helpers/renderWithRouter';
-import { defaultQuestionReportValue, deleteLocalStorage, setLocalStorage } from './mocks/mockLocalStorage';
+import { newPlayerStorage, deleteLocalStorage, setLocalStorage } from './mocks/mockLocalStorage';
 import App from '../App';
 import apiResponse from './mocks/mockTriviaApi';
 
 describe('Timer', () => {
   beforeAll(() => {
-    const newStorage = { name: 'Zu1lu', score: 0, questionReport: defaultQuestionReportValue };
-    setLocalStorage('playerInfo', newStorage);
+    setLocalStorage('playerInfo', newPlayerStorage);
 
     global.fetch = vi.fn(async () => ({
       json: async () => apiResponse,
@@ -32,8 +31,7 @@ describe('Timer', () => {
 
 describe('Verify sure the question text and answer buttons are on the screen and the buttons functionalities', () => {
   beforeAll(() => {
-    const newStorage = { name: 'Zu1lu', score: 0, questionReport: defaultQuestionReportValue };
-    setLocalStorage('playerInfo', newStorage);
+    setLocalStorage('playerInfo', newPlayerStorage);
 
     global.fetch = vi.fn(async () => ({
       json: async () => apiResponse,
@@ -125,8 +123,7 @@ describe('Verify sure the question text and answer buttons are on the screen and
 
 describe('Header', () => {
   beforeAll(() => {
-    const newStorage = { name: 'Zu1lu', score: 0, questionReport: defaultQuestionReportValue };
-    setLocalStorage('playerInfo', newStorage);
+    setLocalStorage('playerInfo', newPlayerStorage);
   });
 
   afterAll(() => {
@@ -172,5 +169,15 @@ describe('Header', () => {
 
     const secondQuestion = await screen.findByText('Question: 2/10');
     expect(secondQuestion).toBeInTheDocument();
+  });
+
+  it('verifies that the Back To Home Page button renders correctly and its functionality', async () => {
+    renderWithRouter(<App />, { route: '/game/question/1' });
+    const backToHomeBtn = await screen.findByRole('button', { name: 'Back To Home Page' });
+    expect(backToHomeBtn).toBeInTheDocument();
+
+    await userEvent.click(backToHomeBtn);
+
+    expect(window.location.pathname).toBe('/home');
   });
 });

@@ -51,10 +51,14 @@ const questionReportFinalValue = {
   hitNumber: 2,
 };
 
+const newPlayerStorage = {
+  name: 'Zu1lu', score: 0, questionReport: defaultQuestionReportValue, id: 'ab1234',
+};
+
 export {
   setLocalStorage,
   getItemLocalStorage,
   deleteLocalStorage,
-  defaultQuestionReportValue,
   questionReportFinalValue,
+  newPlayerStorage,
 };
