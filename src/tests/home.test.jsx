@@ -33,8 +33,12 @@ describe('Checks that all elements are on the screen', () => {
     const buttonScoreboard = screen.getByRole('button', {
       name: 'Scoreboard',
     });
+    const buttonHowToPlay = screen.getByRole('button', {
+      name: 'How To Play',
+    });
     expect(buttonStart).toBeInTheDocument();
     expect(buttonScoreboard).toBeInTheDocument();
+    expect(buttonHowToPlay).toBeInTheDocument();
   });
 });
 
@@ -50,6 +54,18 @@ describe('Check the functionality of the buttons', () => {
 
     await userEvent.click(buttonScoreboard);
     expect(window.location.pathname).toBe('/scoreboard');
+  });
+
+  it('Button How To Play', async () => {
+    renderWithRouter(<App />, { route: '/home' });
+    const buttonHowToPlay = screen.getByRole('button', {
+      name: 'How To Play',
+    });
+
+    expect(buttonHowToPlay).toBeInTheDocument();
+
+    await userEvent.click(buttonHowToPlay);
+    expect(window.location.pathname).toBe('/instructions');
   });
 
   it('Button Start New Game', async () => {
