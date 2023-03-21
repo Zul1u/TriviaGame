@@ -6,6 +6,7 @@ import renderWithRouter from './helpers/renderWithRouter';
 import {
   deleteLocalStorage,
   getItemLocalStorage,
+  newPlayerStorage,
   questionReportFinalValue,
   setLocalStorage,
 } from './mocks/mockLocalStorage';
@@ -13,16 +14,19 @@ import App from '../App';
 
 describe('Scoreboard', () => {
   beforeAll(() => {
+    setLocalStorage('playerInfo', newPlayerStorage);
     const player = {
       name: 'Zu1lu',
       score: 200,
       questionReport: questionReportFinalValue,
+      id: 'ab1234',
     };
     setLocalStorage('scoreboard', [player]);
   });
 
   afterAll(() => {
     deleteLocalStorage('scoreboard');
+    deleteLocalStorage('playerInfo');
   });
 
   it('Verify if the title is on the screen', () => {
@@ -40,16 +44,6 @@ describe('Scoreboard', () => {
 
     const playAgainBtn = screen.getByRole('button', { name: 'Play Again' });
     expect(playAgainBtn).toBeInTheDocument();
-  });
-
-  it('Verify if the goToHome button works correctly', async () => {
-    renderWithRouter(<App />, { route: '/scoreboard' });
-
-    const goToHomeBtn = screen.getByRole('button', { name: 'Go to Home' });
-
-    await userEvent.click(goToHomeBtn);
-
-    expect(window.location.pathname).toBe('/home');
   });
 
   it('Verify if the playAgainBtn button works correctly', async () => {
@@ -98,25 +92,39 @@ describe('Scoreboard', () => {
 
     expect(window.location.pathname).toBe('/game/question/1');
   });
+
+  it('Verify if the goToHome button works correctly', async () => {
+    renderWithRouter(<App />, { route: '/scoreboard' });
+
+    const goToHomeBtn = screen.getByRole('button', { name: 'Go to Home' });
+
+    await userEvent.click(goToHomeBtn);
+
+    expect(window.location.pathname).toBe('/home');
+  });
 });
 
 describe('PlayerReportCard', () => {
   beforeAll(() => {
+    setLocalStorage('playerInfo', newPlayerStorage);
     const playerOne = {
       name: 'Zu1lu',
       score: 199,
       questionReport: questionReportFinalValue,
+      id: 'ab1234',
     };
     const playerTwo = {
       name: 'Arthur',
       score: 200,
       questionReport: questionReportFinalValue,
+      id: 'ab5678',
     };
     setLocalStorage('scoreboard', [playerOne, playerTwo]);
   });
 
   afterAll(() => {
     deleteLocalStorage('scoreboard');
+    deleteLocalStorage('playerInfo');
   });
 
   it('Verify that all players display correctly', async () => {
